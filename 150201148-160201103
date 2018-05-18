@@ -1,0 +1,841 @@
+ 
+
+/**
+ * @author root
+ *
+ */
+abstract class Arac {
+	
+	private String seriNo;
+	private int tekerlekSayisi;
+	private String marka;
+	private int hiz;
+	private int yolcuSayisi;
+	private int fiyat;
+	private int uretimYili;
+	private String renk;
+	
+	public Arac()
+	{
+		
+	}
+	public Arac(String marka,String seriNo,int tekerlekSayisi,int hiz,int yolcuSayisi,int fiyat,int uretimYili,String renk) 
+	{
+		this.seriNo=seriNo;
+		this.tekerlekSayisi=tekerlekSayisi;
+		this.marka=marka;
+		this.hiz=hiz;
+		this.yolcuSayisi=yolcuSayisi;
+		this.fiyat=fiyat;
+		this.uretimYili=uretimYili;
+		this.renk=renk;
+	}
+	
+	public void setTekerlekSayisi(int tekerlekSayisi)
+	{
+		this.tekerlekSayisi=tekerlekSayisi;
+	}
+	public int getTekerlekSayisi()
+	{
+		return this.tekerlekSayisi;
+	}
+	public void setSeriNo(String seriNo)
+	{
+		this.seriNo=seriNo;
+	}
+	public String getSeriNo()
+	{
+		return this.seriNo;
+	}
+	public void setMarka(String marka)
+	{
+		this.marka=marka;
+	}
+	public String getMarka()
+	{
+		return this.marka;
+	}
+	public void setHiz(int hiz)
+	{
+		this.hiz=hiz;
+	}
+	public int getHiz()
+	{
+		return this.hiz;
+	}
+	public void setYolcuSayisi(int yolcuSayisi)
+	{
+		this.yolcuSayisi=yolcuSayisi;
+	}
+	public int getYolcuSayisi()
+	{
+		return this.yolcuSayisi;
+	}
+	public void setFiyat(int fiyat)
+	{
+		this.fiyat=fiyat;
+	}
+	public int getFiyat()
+	{
+		return this.fiyat;
+	}
+	public void setUretimYili(int uretimYili)
+	{
+		this.uretimYili=uretimYili;
+	}
+	public int getUretimYili()
+	{
+		return this.uretimYili;
+	}
+	public void setRenk(String renk)
+	{
+		this.renk=renk;
+	}
+	public String getRenk()
+	{
+		return this.renk;
+	}
+
+
+	abstract void hızlan(Arac a,int hiz);
+	abstract void yavasla(Arac a,int hiz);
+	abstract void dur(Arac a,int hiz);
+	
+	}
+	
+
+-------------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+import java.io.*;
+
+public class AracTxt {
+
+	private File file;
+	private BufferedWriter bWriter;
+	private FileWriter fileWriter;
+	private int x=0;
+	public void DosyayaYaz(Arac a) throws IOException
+	{   
+		file = new File("Arac.txt");
+	    fileWriter = new FileWriter(file, true);
+	    bWriter = new BufferedWriter(fileWriter);
+	    
+	    if (!file.exists()) 
+	    {
+	    	file.createNewFile();
+	    }
+	    if(x==0)
+	    {
+		    bWriter.write("Serino\t\tFiyat\tMarka\tRenk\tUretimYili\tYolcuSayisi\tTekerlekSayisi\tHiz\n");
+		    x++;
+	    }
+	    
+        bWriter.write("\n"+a.getSeriNo()+"\t");
+        bWriter.write(a.getFiyat()+"\t");
+        bWriter.write(a.getMarka()+"\t");
+        bWriter.write(a.getRenk()+"\t");
+        bWriter.write(a.getUretimYili()+"\t\t");
+        bWriter.write(a.getYolcuSayisi()+"\t\t");
+        bWriter.write(a.getTekerlekSayisi()+"\t\t");
+        bWriter.write(a.getHiz()+"\t");
+        
+        bWriter.close();
+	}
+	public void DosyayıDuzenle(Arac araclar[],int a) throws IOException
+	{   
+		int i=0;
+	    fileWriter = new FileWriter(file, false);
+	    bWriter = new BufferedWriter(fileWriter);
+	    bWriter.write("Serino\t\tFiyat\tMarka\tRenk\tUretimYili\tYolcuSayisi\tTekerlekSayisi\tHiz\n");
+	    while(i!=a) {
+	    	bWriter.write("\n"+araclar[i].getSeriNo()+"\t");
+			bWriter.write(araclar[i].getFiyat()+"\t");
+		    bWriter.write(araclar[i].getMarka()+"\t");
+			bWriter.write(araclar[i].getRenk()+"\t");
+		    bWriter.write(araclar[i].getUretimYili()+"\t\t");
+		    bWriter.write(araclar[i].getYolcuSayisi()+"\t\t");
+			bWriter.write(araclar[i].getTekerlekSayisi()+"\t\t");
+			bWriter.write(araclar[i].getHiz()+"\t");
+			i++;
+	    }
+	    System.out.println("Txt dosyası düzenlenmiştir..");
+		bWriter.close();
+	}
+}
+
+
+---------------------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Bisiklet extends Motorsuz{
+	
+}
+
+-------------------------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+import java.util.Scanner;
+public class Deniz extends x{
+	Scanner scn = new Scanner(System.in);
+	@Override
+	void hızlan(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub	
+		System.out.println("Aracınızın eski hızı "+a.getHiz()+" dır");
+		a.setHiz(hiz);		
+	}
+
+	@Override
+	void dur(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Aracınız durduruluyor ");
+		hiz=0;
+		a.setHiz(hiz);
+	}
+
+	@Override
+	void yavasla(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Aracınızın eski hızı "+a.getHiz()+" dır");
+		a.setHiz(hiz);
+		
+	}	
+	
+}
+
+--------------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Gemi extends Deniz{
+
+}
+
+
+------------------------------------------------------------------------------
+
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Hava extends x {
+
+	
+		
+	
+}
+
+-----------------------------------------------------------------------------
+
+import java.util.Scanner;
+
+/**
+ * 
+ */
+/**
+ * @author root
+ *
+ */
+public class Kara extends Arac
+{
+	Scanner scn = new Scanner(System.in);
+	
+	@Override
+	void hızlan(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub	
+		System.out.println("Aracınızın eski hızı "+a.getHiz()+" dır");
+		a.setHiz(hiz);
+		
+	}
+
+	@Override
+	void dur(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Aracınız durduruluyor ");
+		hiz=0;
+		a.setHiz(hiz);
+	}
+
+	@Override
+	void yavasla(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Aracınızın eski hızı "+a.getHiz()+" dır");
+		a.setHiz(hiz);
+		
+	}
+
+}
+
+	
+	
+
+
+-------------------------------------------------------------------------------------
+
+import java.io.IOException;
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		Menu a = new Menu();
+		a.anaMenu();
+		
+	}
+
+}
+
+
+-----------------------------------------------------------------------------------------
+
+
+import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Menu {
+	AracTxt txt = new AracTxt();
+	Scanner scn=new Scanner(System.in);
+	/**
+	 * @param args
+	 */
+	int a=0,k=0,h=0,d=0;	
+	Arac [] Araclar = new Arac[300] ;
+	int [] kara = new int[100] ;
+	int [] hava= new int[100] ;
+	int [] deniz= new int[100];
+	int [] seriNo= {1,1,1,1,1};
+	
+	public void anaMenu() throws IOException {
+		int secim=0;
+		while(secim!=4) 
+		{
+			try
+			{
+				System.out.println("Yapmak istediğiniz işlemi seçiniz: ");
+				System.out.println("1-Veri Girisinde Bulun");
+				System.out.println("2-Verileri Listele");
+				System.out.println("3-Verileri Guncelle");
+				System.out.println("4-Çıkış");
+				secim=scn.nextInt();
+			
+					switch(secim) 
+					{
+						case 1:
+							Menu1();
+							break;
+						case 2:
+							Menu2();
+							break;
+						case 3:
+							Menu3();
+							break;
+						case 4:
+							Cikis();
+							break;
+					}
+			}catch(InputMismatchException e){
+				System.out.print("Hatalı bir giris yaptınız program kapanıyor..");
+				Cikis();
+			}
+		}
+	}
+	public void Menu1() throws IOException 
+	{
+		int secim;
+		try 
+		{
+			System.out.println("Veri Girisinde Bulunacagınız aracı seciniz: ");
+			System.out.println("1-Otomobil");
+			System.out.println("2-Bisiklet");
+			System.out.println("3-Gemi");
+			System.out.println("4-Uçak");
+			System.out.println("5-Uçan Gemi");
+			System.out.println("6-Bir önceki menüye dön");
+			System.out.println("7-Çıkış");
+			secim = scn.nextInt();
+		
+				switch(secim) 
+				{	
+					case 1:
+						Araclar[a]=new Otomobil();
+						Araclar[a].setSeriNo("Otomobil_"+Integer.toString(seriNo[1]++));
+						VeriGirisi(Araclar[a]);
+						kara[k++]=a;	
+						a++;
+						break;
+					case 2:
+						Araclar[a]=new Bisiklet();
+						Araclar[a].setSeriNo("Bisiklet_"+Integer.toString(seriNo[2]++));
+						VeriGirisi(Araclar[a]);
+						kara[k++]=a;
+						a++;
+						break;
+					case 3:
+						Araclar[a]=new Gemi();
+						Araclar[a].setSeriNo("Gemi_"+Integer.toString(seriNo[3]++));
+						VeriGirisi(Araclar[a]);
+						deniz[d++]=a;
+						a++;
+						break;
+					case 4:
+						Araclar[a]=new Ucak();
+						Araclar[a].setSeriNo("Ucak_"+Integer.toString(seriNo[4]++));
+						VeriGirisi(Araclar[a]);
+						hava[h++]=a;
+						a++;
+						break;
+					case 5:
+						Araclar[a]=new UcanGemi();
+						Araclar[a].setSeriNo("UcanGemi_"+Integer.toString(seriNo[5]++));
+						VeriGirisi(Araclar[a]);
+						deniz[d++]=a;
+						a++;
+						break;
+					case 6:
+						BirOncekiMenu(0);
+						break;
+					case 7:
+						Cikis();
+						break;
+				}
+		}catch(InputMismatchException e){
+			System.out.println("Hatalı bir giris yaptınız program kapanıyor..");
+			Cikis();
+		}
+	}
+	
+	public void Menu2() throws IOException 
+	{
+		int secim;
+		try {
+			System.out.println("Listelemek istediginiz veri tipini seciniz: ");
+			System.out.println("1-Kara Aracları");
+			System.out.println("2-Deniz Aracları");
+			System.out.println("3-Hava Aracları");
+			System.out.println("4-Bir onceki menuye don");
+			System.out.println("5-Cıkıs");
+			secim=scn.nextInt();
+		
+			switch(secim)
+			{
+				case 1:
+					System.out.println("------KARA ARAÇLARI------");
+					for(int i=0;i<k;i++)
+					{
+						System.out.println("----"+(i+1)+". Kara Aracı ----");
+						Listele(Araclar[kara[i]]);
+					}
+					break;
+				case 2:
+					System.out.println("------DENİZ ARAÇLARI------");
+					for(int i=0;i<d;i++)
+					{
+						System.out.println("----"+(i+1)+". Deniz Aracı ----");
+						Listele(Araclar[deniz[i]]);
+					}
+					break;
+				case 3:
+					System.out.println("------HAVA ARAÇLARI------");
+					for(int i=0;i<h;i++)
+					{
+						System.out.println("----"+(i+1)+". Hava Aracı ----");
+						Listele(Araclar[hava[i]]);
+					}
+					break;
+				case 4:
+					BirOncekiMenu(0);
+					break;
+				case 5:
+					Cikis();
+					break;
+			}
+		}catch(InputMismatchException e){
+			System.out.println("Hatalı bir giris yaptınız program kapanıyor..");
+			Cikis();
+		}
+	}
+	public void Menu3() throws IOException
+	{
+		String SeriNo;
+		int x=0;
+		try 
+		{
+		System.out.print("Guncellemek istediginiz aracin id'sini giriniz: ");
+		SeriNo=scn.next();
+		
+			for(int i =0 ;i<=a;i++)
+			{
+				if(SeriNo.equals(Araclar[i].getSeriNo()))
+				{
+					VeriGuncelle(Araclar[i],SeriNo);
+					x++;
+					break;
+				}	
+			}
+		}catch(InputMismatchException e){
+			System.out.println("Hatalı bir giris yaptınız program kapanıyor..");
+			Cikis();
+		}
+		if(x==0)
+		{
+			System.out.println("Araç bulunamadı...");
+		}
+	}
+	
+	
+	public void VeriGirisi(Arac arac) throws IOException{
+	try {
+		System.out.print("Aracınızın fiyati: ");
+		int fiyat = scn.nextInt();
+		System.out.print("Aracınızın hizi: ");
+		int hiz = scn.nextInt();
+		System.out.print("Aracınızın marka: ");
+		String marka = scn.next();
+		System.out.print("Aracınızın rengi: ");
+		String renk = scn.next();
+		System.out.print("Aracınızın uretim yili: ");
+		int uretimYili = scn.nextInt();
+		System.out.print("Aracınızın yolcu sayisi: ");
+		int yolcuSayisi = scn.nextInt();
+		System.out.print("Aracınızın tekerlek sayisini giriniz: ");
+		int tekerlekSayisi = scn.nextInt();
+		System.out.println();
+		
+		arac.setFiyat(fiyat);
+		arac.setHiz(hiz);
+		arac.setMarka(marka);
+		arac.setRenk(renk);
+		arac.setUretimYili(uretimYili);
+		arac.setTekerlekSayisi(tekerlekSayisi);
+		arac.setYolcuSayisi(yolcuSayisi);
+		System.out.println("Arac icin bazı fonksiyonlar bulunmaktadır.. ");
+		System.out.println("1-Hizlan");
+		System.out.println("2-Yavasla");
+		System.out.println("3-Dur");
+		System.out.println("4-Cıkıs");
+		int a=scn.nextInt();
+		switch(a) 
+		{
+			case 1:
+				System.out.print("Hız degerini giriniz:");
+				hiz=scn.nextInt();
+				arac.hızlan(arac,hiz);
+				break;
+			case 2:
+				System.out.print("Hız degerini giriniz:");
+				hiz=scn.nextInt();
+				arac.yavasla(arac,hiz);
+				break;
+			case 3:
+				arac.dur(arac,hiz);
+				break;
+			case 4:
+				break;
+		}
+		txt.DosyayaYaz(arac);
+	}catch(InputMismatchException e){
+		System.out.println("Hatalı bir giris yaptınız program kapanıyor..");
+		Cikis();
+	}
+	}
+
+	public void Listele(Arac arac)
+	{
+		System.out.println("---- "+arac.getSeriNo()+" 'ın bilgileri----\n");
+		System.out.println("Aracın markası: "+arac.getMarka());
+		System.out.println("Aracın Hızı: "+arac.getHiz());
+		System.out.println("Aracın Yolcu sayisi: "+arac.getYolcuSayisi());
+		System.out.println("Aracın fiyatı: "+arac.getFiyat());
+		System.out.println("Aracın uretim yili: "+arac.getUretimYili());
+		System.out.println("Aracın rengi: "+arac.getRenk());
+		System.out.println("Aracın tekerlek sayisi: "+arac.getTekerlekSayisi()+"\n");
+	}
+	
+	public void VeriGuncelle(Arac arac,String id) throws IOException
+	{
+		int secim;
+		try {
+		System.out.println("Güncellemek istediginiz veriyi seçiniz: ");
+		System.out.println("1-Aracın Hızı");
+		System.out.println("2-Aracın Tekerlek sayisi");
+		System.out.println("3-Aracın fiyatı ");
+		System.out.println("4-Aracın Yolcu Sayisi ");
+		System.out.println("5-Aracın rengi ");
+		System.out.println("6-Aracın uretim yili ");
+		System.out.println("7-Aracın markasi ");
+		System.out.println("0-Aracı silmek için 0'a basınız...");
+		secim = scn.nextInt();
+		
+			switch(secim)
+			{
+				case 1:
+					System.out.print("Yeni hizi giriniz: ");
+					int hiz=scn.nextInt();
+					arac.setHiz(hiz);
+					System.out.println(id+" ın verisi güncellenmiştir..\n");
+					break;
+				case 2:
+					System.out.print("Tekerlek sayisini giriniz: ");
+					int tekerlekSayisi=scn.nextInt();
+					arac.setTekerlekSayisi(tekerlekSayisi);	
+					System.out.println(id+" ın verisi güncellenmiştir..\n");
+					break;
+				case 3:
+					System.out.print("Yeni fiyati giriniz: ");
+					int fiyat=scn.nextInt();
+					arac.setFiyat(fiyat);
+					System.out.println(id+" ın verisi güncellenmiştir..\n");
+					break;
+				case 4:
+					System.out.print("Yolcu sayisini giriniz: ");
+					int yolcuSayisi=scn.nextInt();
+					arac.setYolcuSayisi(yolcuSayisi);
+					System.out.println(id+" 'ın verisi güncellenmiştir..\n");
+					break;
+				case 5:
+					System.out.print("Yeni rengi giriniz: ");
+					String renk=scn.next();
+					arac.setRenk(renk);
+					System.out.println(id+" ın verisi güncellenmiştir..\n");
+					break;
+				case 6:
+					System.out.print(id+"Uretim yilini giriniz: ");
+					int uretimYili=scn.nextInt();
+					arac.setUretimYili(uretimYili);
+					System.out.println(id+" ın verisi güncellenmiştir..\n");
+					break;
+				case 7:
+					System.out.print("Markayi giriniz: ");
+					String marka=scn.next();
+					arac.setMarka(marka);
+					System.out.println(id+" ın verisi güncellenmiştir..\n");
+					break;
+				case 0:
+					int k=0;
+					for(int i=0;i<=Araclar.length;i++) 
+					{
+						if(Araclar[i].getSeriNo().equals(id))
+						{
+							for(int j=i;Araclar[j+1]!=null;j++) 
+							{
+								Araclar[j+1].setSeriNo(Araclar[j].getSeriNo());
+								Araclar[j]=Araclar[j+1];
+								k=j;
+							}
+							System.out.println("Araç silinmiştir..");
+							break;
+						}
+					}
+					txt.DosyayıDuzenle(Araclar, this.a-1);
+					break;
+			}
+		}catch(InputMismatchException e){
+			System.out.println("Hatalı bir giris yaptınız program kapanıyor..");
+			Cikis();
+		}
+	}
+	
+	public void BirOncekiMenu(int x) throws IOException 
+	{
+		if(x==0)
+		{
+			anaMenu();
+		}
+		else
+		{			
+			Menu1();
+		}
+	}
+	public void Cikis() throws IOException
+	{	
+		txt.DosyayıDuzenle(Araclar,this.a);	
+		System.out.println("Çıkış yapılıyor...");
+		System.exit(0);
+	}
+}
+
+
+
+--------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Motorlu extends Kara{
+	private String yakitTuru;
+	
+	public Motorlu()
+	{
+		
+	}
+	public Motorlu(String yakitTuru)
+	{
+		this.yakitTuru=yakitTuru;
+	}
+	public void setYakitTuru(String yakitTuru) 
+	{
+		this.yakitTuru=yakitTuru;
+	}
+	public String getYakitTuru() 
+	{
+		return this.yakitTuru;
+	}
+}
+
+
+----------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Motorsuz extends Kara {
+	
+}
+
+
+------------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Otomobil extends Motorlu {
+
+}
+
+
+---------------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class Ucak extends Hava{
+}
+
+
+---------------------------------------------------------------------------
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class UcanGemi extends x{
+	
+
+}
+
+
+-----------------------------------------------------------------------------
+
+abstract class x extends Arac{
+	
+	@Override
+	void hızlan(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub	
+		System.out.println("Aracınızın eski hızı "+a.getHiz()+" dır");	
+		a.setHiz(hiz);		
+	}
+
+	@Override
+	void dur(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Aracınız hava aracı oldugu için önce yavaşlatılması gereklidir.. ");
+		yavasla(a,hiz);
+		a.setHiz(0);
+	}
+
+	@Override
+	void yavasla(Arac a,int hiz) 
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Aracınızın su anki hızı "+a.getHiz()+" dır");
+		a.setHiz(hiz);
+	}
+}
+
+
+-------------------------------------------------------------------------
